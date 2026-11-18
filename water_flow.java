@@ -13,29 +13,17 @@ public class water_flow {
 			{200, 200, 200, 200, 200, 200, 200, 200, 78, 77},
 			{200, 98, 200, 200, 200, 200, 200, 200, 200, 76}		
         };
-        System.out.println(canFlowOff(map, 2, 2));
+        System.out.println(canFlowOff(map, 3, 0));
 
     }
 
     public boolean canFlowOff(int[][] map, int row, int col) {
-        System.out.println(map[row][col]);
-        if (row == 0 || col == 0 || row == map.length || col == map[row].length) {
+        if (row==0 || col == 0 || row == map.length || col == map[row].length) {
             return true;
         }
-        else if (row+1 >= map.length && map[row][col] > map[row+1][col]) {
-            return canFlowOff(map, row+1, col);
-        }
-        else if (row-1 >= 0 && map[row][col] > map[row-1][col]) {
-            return canFlowOff(map, row-1, col);
-        }
-        else if (col+1 >= map[row].length && map[row][col] > map[row][col+1]) {
-            return canFlowOff(map, row, col+1);
-        }
-        else if (col-1 >= 0 && map[row][col] > map[row][col-1]) {
-            return canFlowOff(map, row, col-1);
-        }
-        else {
-            return false;
-        }
+
+        return canFlowOff(map, row-1, col) || canFlowOff(map, row+1, col) || canFlowOff(map, row, col-1) || canFlowOff(map, row, col+1);
+      
+
     }
 }
