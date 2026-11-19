@@ -13,7 +13,7 @@ public class water_flow {
 			{200, 200, 200, 200, 200, 200, 200, 200, 78, 77},
 			{200, 98, 200, 200, 200, 200, 200, 200, 200, 76}		
         };
-        System.out.println(canFlowOff(map, 3, 0));
+        System.out.println(canFlowOff(map, 3, 4));
 
     }
 
@@ -22,8 +22,7 @@ public class water_flow {
             return true;
         }
 
-        return canFlowOff(map, row-1, col) || canFlowOff(map, row+1, col) || canFlowOff(map, row, col-1) || canFlowOff(map, row, col+1);
-      
 
+        return canFlowOff(map, row-1, col) || canFlowOff(map, row+1, col) || canFlowOff(map, row, col-1) || canFlowOff(map, row, col+1);
     }
 }
