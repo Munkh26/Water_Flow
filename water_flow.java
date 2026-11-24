@@ -27,23 +27,21 @@ public class water_flow {
         boolean checkDown = false;
         boolean checkRight = false;
         boolean checkLeft = false;
-        if (row == 0 || col == 0 || row == map.length || col == map[row].length) {
-            return true;
-        }
-        else if (map[row][col] > map[row-1][col]){
+  
+        if (row-1 > 0 && map[row][col] > map[row-1][col]){
             checkUp = canFlowOff(map, row-1, col);
         }
-        
-        else if (map[row][col] > map[row+1][col]){
+        if (row+1 < map.length-1 && map[row][col] > map[row+1][col]){
             checkDown = canFlowOff(map, row+1, col);
         }
-
-        else if (map[row][col] > map[row][col-1]){
+        if (col-1 > 0 && map[row][col] > map[row][col-1]){
             checkLeft = canFlowOff(map, row, col-1);
         }
-
-        else if (map[row][col] > map[row][col+1]){
+        if (col+1 < map[row].length-1 && map[row][col] > map[row][col+1]){
             checkRight = canFlowOff(map, row, col+1);
+        }
+        if (row == 0 || col == 0 || row == map.length-1 || col == map[row].length-1) {
+            return true;
         }
         return checkUp || checkDown || checkLeft || checkRight;
 
