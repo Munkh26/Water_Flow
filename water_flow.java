@@ -18,31 +18,32 @@ public class water_flow {
 			{200, 200, 200, 200, 200, 200, 200, 200, 78, 77},
 			{200, 98, 200, 200, 200, 200, 200, 200, 200, 76}		
         };
-        System.out.println(canFlowOff(map, 3, 4));
+        System.out.println(canFlowOff(map, 3, 3));
 
     }
 
     public boolean canFlowOff(int[][] map, int row, int col) {
+        if (row == 0 || col == 0 || row == map.length-1 || col == map[row].length-1) {
+            return true;
+        }
         boolean checkUp = false;
         boolean checkDown = false;
         boolean checkRight = false;
         boolean checkLeft = false;
-  
-        if (row-1 > 0 && map[row][col] > map[row-1][col]){
+
+        if (row-1 >= 0 && map[row][col] > map[row-1][col]){
             checkUp = canFlowOff(map, row-1, col);
         }
-        if (row+1 < map.length-1 && map[row][col] > map[row+1][col]){
+        if (row+1 < map.length && map[row][col] > map[row+1][col]){
             checkDown = canFlowOff(map, row+1, col);
         }
-        if (col-1 > 0 && map[row][col] > map[row][col-1]){
+        if (col-1 >= 0 && map[row][col] > map[row][col-1]){
             checkLeft = canFlowOff(map, row, col-1);
         }
-        if (col+1 < map[row].length-1 && map[row][col] > map[row][col+1]){
+        if (col+1 < map[row].length && map[row][col] > map[row][col+1]){
             checkRight = canFlowOff(map, row, col+1);
         }
-        if (row == 0 || col == 0 || row == map.length-1 || col == map[row].length-1) {
-            return true;
-        }
+
         return checkUp || checkDown || checkLeft || checkRight;
 
     }
