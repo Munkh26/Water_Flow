@@ -4,7 +4,7 @@
 
 
 public class water_flow {
-    public void main(String[] args)
+    private void main(String[] args)
     {
         int[][] map = {
             {100, 99, 200, 200, 200, 200, 200, 200, 200, 200}, 
